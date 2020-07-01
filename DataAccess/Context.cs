@@ -59,7 +59,7 @@ namespace DataAccess
 
         public DbSet<CartItem> CartItems { get; set; }
 
-        public DbSet<Category> Category { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public DbSet<City> Cities { get; set; }
 
