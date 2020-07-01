@@ -40,6 +40,8 @@ namespace Api
             services.AddHttpContextAccessor();
             services.AddTransient<IGetBooksQuery, EfGetBooksQuery>();
             services.AddTransient<IGetAuthorsQuery, EfGetAuthorsQeury>();
+            services.AddTransient<IGetCategoriesQuery, EfGetCategories>();
+            services.AddTransient<IGetSingleProductQuery, EfGetSingleBook>();
             services.AddTransient<IGetPublishersQuery, EfGetPublishersQuery>();
             services.AddTransient<IApplicationActor>(x =>
             {
@@ -62,6 +64,7 @@ namespace Api
             services.AddTransient<IUseCaseLogger, DatabaseUseCaseLogger>();
             services.AddTransient<IBookInsertCommand, EfInsertBook>();
             services.AddTransient<IPublisherInsertCommand, EfInsertPublisher>();
+            services.AddTransient<ICategoryInsertCommand, EfInsertCategory>();
             services.AddTransient<IAuthorInsertCommand, EfInsertAuthor>();
             services.AddTransient<UseCaseExecutor>();
             services.AddTransient<JwtManager>();

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application;
 using Application.Commands;
 using Application.DataTransfer;
+using Application.Filters;
 using Application.Queries;
 using Application.Searches;
 using Microsoft.AspNetCore.Http;
@@ -34,10 +35,11 @@ namespace Api.Controllers
         }
 
         // GET: api/Book/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        public IActionResult Get([FromRoute] GetOne search,
+            [FromServices] IGetSingleProductQuery query)
         {
-            return "value";
+            return Ok(executor.ExecuteQuery(query, search));
         }
 
         // POST: api/Book
