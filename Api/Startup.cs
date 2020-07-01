@@ -43,6 +43,7 @@ namespace Api
             services.AddTransient<IGetCategoriesQuery, EfGetCategories>();
             services.AddTransient<IGetSingleProductQuery, EfGetSingleBook>();
             services.AddTransient<IGetPublishersQuery, EfGetPublishersQuery>();
+            services.AddTransient<IGetAllCartItemsQuery, EfGetCartItems>();
             services.AddTransient<IApplicationActor>(x =>
             {
                 var accessor = x.GetService<IHttpContextAccessor>();
