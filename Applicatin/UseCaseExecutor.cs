@@ -34,6 +34,7 @@ namespace Application
             TRequest request)
         {
             logger.Log(command, actor, request);
+
             if (!actor.AllowedUseCases.Contains(command.Id))
             {
                 throw new UnauthorizedUseCaseException(command, actor);
