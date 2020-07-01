@@ -1,4 +1,5 @@
-﻿using Application.Commands;
+﻿using Application;
+using Application.Commands;
 using Application.DataTransfer;
 using DataAccess;
 using Domain;
@@ -12,10 +13,12 @@ namespace Implementation.Commands
     public class EfRegisterUser : IRegisterUserCommand
     {
         private readonly Context _context;
+        private readonly IApplicationActor _actor;
 
-        public EfRegisterUser(Context context)
+        public EfRegisterUser(Context context, IApplicationActor actor)
         {
             _context = context;
+            _actor = actor;
         }
 
         public int Id => 1;
@@ -24,6 +27,7 @@ namespace Implementation.Commands
 
         public void Execute(RegisterUserDto request)
         {
+
             var user = new User()
             {
                 FirstName = request.FirstName,
