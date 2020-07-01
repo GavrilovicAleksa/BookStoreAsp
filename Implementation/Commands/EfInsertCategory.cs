@@ -27,7 +27,7 @@ namespace Implementation.Commands
                 Name = request.Name
             };
 
-            _context.Category.Add(category);
+            _context.Categories.Add(category);
             _context.SaveChanges();
         }
     }

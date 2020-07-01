@@ -1,31 +1,35 @@
-﻿using System;
+﻿using Application.DataTransfer;
+using Application.Filters;
+using Application.Queries;
+using DataAccess;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Implementation.Queries
 {
-    public class EfGetCategories
+    public class EfGetCategories : IGetCategoriesQuery
     {
         private readonly Context context;
 
-        public EfGetPublishersQuery(Context context)
+        public EfGetCategories(Context context)
         {
             this.context = context;
         }
         public int Id => 3;
 
-        public string Name => "Get list of publisher";
-        public GetAllResponse<PublisherDto> Execute(GetAll search)
+        public string Name => "Get list of categories";
+        public GetAllResponse<CategoryDto> Execute(GetAll search)
         {
-            var publishers = context.Publishers.AsQueryable();
+            var categories = context.Categories.AsQueryable();
 
-            var reponse = new GetAllResponse<PublisherDto>
+            var reponse = new GetAllResponse<CategoryDto>
             {
-                Items = publishers.Select(x => new PublisherDto
+                Items = categories.Select(x => new CategoryDto
                 {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Address = x.Address
+                   Id = x.Id,
+                   Name = x.Name
                 }).ToList()
             };
 

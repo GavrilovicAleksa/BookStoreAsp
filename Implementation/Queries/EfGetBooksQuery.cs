@@ -45,8 +45,11 @@ namespace Implementation.Queries
                     Title = x.Title,
                     Price = x.BookPublishers.Select(bp => bp.Price).FirstOrDefault(),
                     CategoryName = x.Category.Name,
-                    Publishers = x.BookPublishers.Select(bp => bp.Publisher.ToString()),
-                    AuthorsNames = x.BookAuthors.Select(ba => ba.Author.ToString())
+                    Publishers = x.BookPublishers.Select(bp => bp.Publisher.Name),
+                    AuthorsNames = x.BookAuthors.Select(ba => ba.Author.FirstName),
+                    Src = x.Image.Src,
+                    Alt = x.Image.Alt
+                    
                 }).ToList()
             };
 

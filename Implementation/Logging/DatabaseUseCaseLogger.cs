@@ -15,15 +15,15 @@ namespace Implementation.Logging
 
         public void Log(IUseCase useCase, IApplicationActor actor, object useCaseData)
         {
-            //_context.UseCaseLogs.Add(new Domain.UseCaseLog
-            //{
-            //    Actor = actor.Identity,
-            //    Data = JsonConvert.SerializeObject(useCaseData),
-            //    Date = DateTime.UtcNow,
-            //    UseCaseName = useCase.Name
-            //});
+            _context.UseCaseLogs.Add(new Domain.UseCaseLog
+            {
+                Actor = actor.Identity,
+               Data = JsonConvert.SerializeObject(useCaseData),
+                Date = DateTime.UtcNow,
+               UseCaseName = useCase.Name
+            });
 
-            //_context.SaveChanges();
+            _context.SaveChanges();
         }
     }
 }
