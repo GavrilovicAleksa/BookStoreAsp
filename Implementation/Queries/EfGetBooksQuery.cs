@@ -31,9 +31,18 @@ namespace Implementation.Queries
                 query = query.Where(x => x.Title.ToLower().Contains(filter.Title.ToLower()));
             }
 
+            if (filter.CategoryId != null)
+            {
+                query = query.Where(x => x.CategoryId == filter.CategoryId);
+            }
+
+            if(filter.AuthorId != null)
+            {
+                query = query.Where(x => x.BookAuthors.Select(ba => ba.Author).Where(ba => ba.Id == filter.AuthorId).FirstOrDefault());
+            }
+
             var skipCount = filter.PerPage * (filter.Page - 1);
 
-            //Page == 1 
             var reponse = new PagedResponse<BookDto>
             {
                 CurrentPage = filter.Page,
