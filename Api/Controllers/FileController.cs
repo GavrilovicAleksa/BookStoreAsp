@@ -32,7 +32,7 @@ namespace Api.Controllers
             }
             catch(Exception e)
             {
-                return Problem();
+                return StatusCode(500);
             }
 
             

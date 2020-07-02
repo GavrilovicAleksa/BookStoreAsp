@@ -39,19 +39,15 @@ namespace Api.Controllers
         {
             return Ok(executor.ExecuteQuery(query, search));
         }
+    
+
+    // POST api/<CartController>
+    [HttpPost]
+    public void Post([FromBody] CartInsertDto dto,
+       [FromServices] ICartInsertCommand command)
+    {
+        executor.ExecuteCommand(command, dto);
     }
 
-        // POST api/<CartController>
-        [HttpPost]
-        public void Post([FromBody] CartInsertDto dto,
-           [FromServices] ICartInsertCommand command)
-        {
-            executor.ExecuteCommand(command, dto);
-        }
-
-        // DELETE api/<CartController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+}
 }
